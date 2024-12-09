@@ -20,11 +20,11 @@ BUCKET_NAME = "skinory-classify"
 bucket = storage_client.bucket(BUCKET_NAME)
 
 # Load trained model
-MODEL_PATH = "Model/terbaru_mentoring.h5"
+MODEL_PATH = "Model/SKINORY.h5"
 model = tf.keras.models.load_model(MODEL_PATH)
 
 # Skin type labels
-SKIN_TYPE_LABELS = {0: "dry", 1: "oily", 2: "normal"}
+SKIN_TYPE_LABELS = {0: "dry", 1: "normal", 2: "oily"}
 
 # Database connection
 def get_db_connection():
@@ -93,7 +93,7 @@ def predict(user_id):
 
         # Prediksi menggunakan model
         predictions = model.predict(processed_image)
-        class_names = ['dry', 'oily', 'normal']  # Nama kelas sesuai dataset Anda
+        class_names = ['dry', 'normal', 'oily']  # Nama kelas sesuai dataset Anda
         probabilities = predictions[0].astype(float)  # Konversi ke tipe data float Python
 
         # Mapping probabilitas ke nama kelas
